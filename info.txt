@@ -1,0 +1,3 @@
+image sources: 
+bitcoin1: http://www.egyptindependent.com/app/uploads/2017/08/bitcoin.jpg
+bitcoin2: https://bitcoin.org/img/video/video_wuc.jpg
