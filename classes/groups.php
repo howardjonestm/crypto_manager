@@ -49,6 +49,29 @@ class groups{
         $groups->execute(array(':groupName'=>$groupName));       
     }
 
+    //Add user to an existing group 
+    public function addUser($userID,$groupID){
+        $add = $this->db->prepare('INSERT INTO group_membership (user_id, group_id) values (:userID, :groupID)');
+        $add->execute(array(':userID'=>$userID, 'groupID'=>$groupID));
+    }
+
+    //Return group ID from group name 
+    public function getGroupId($groupName){
+        $sdmt=$this->db->prepare("SELECT group_id from groups where group_name = :groupName");
+        $sdmt->execute(array(':groupName'=>$groupName));
+        $row = $sdmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
+
+    //Remove all group membership records
+    public function deleteGroupMembers($groupId){
+        $sdmt=$this->db->prepare("DELETE from group_membership where group_id = :groupId");
+        $sdmt->execute(array(':groupId'=>$groupId));
+        
+
+    }
+
+
 
 
 }

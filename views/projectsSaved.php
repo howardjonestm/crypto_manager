@@ -1,5 +1,5 @@
 <?php 
-$activePage = "projects";
+$activePage = "admin";
 include 'header.php';
 include '../init.php';
 ?>
@@ -10,7 +10,7 @@ include '../init.php';
 <div class="col-sm rounded">
     <h5>Create a new investment group</h5>
 
-    <form class="form-signin" action="../logic/projects.php" method="post">
+    <form class="form-signin" action="../logic/admin.php" method="post">
   
       <label for="groupName" class="sr-only">Group Name</label>
       <input type="text" id="groupName" class="form-control" name="groupName" placeholder="Group name" autofocus>
@@ -52,6 +52,33 @@ foreach($groupsArray as $groupName){
 }
 
 ?>
+
+<form class="form-signin" action="../logic/personalInvestment.php" method="post">
+      <h3 class="form-signin-heading">Bitcoin</h3>
+      <select class="custom-select col" id="btcBuySell" name="btcBuySell">
+        <option selected>Option</option>
+        <option value="buy">Buy</option>
+        <option value="sell">Sell</option>
+      </select>
+      <label for="bitcoinQuantity" class="sr-only">Quantity</label>
+      <input type="number" id="bitcoinQuantity" class="form-control" name="bitcoinQuantity" placeholder="Quantity" autofocus>
+      
+      <br>
+
+      <h3 class="form-signin-heading">Ethereum</h3>
+      <select class="custom-select col" id="ethBuySell" name="ethBuySell">
+        <option selected>Option</option>
+        <option value="buy">Buy</option>
+        <option value="sell">Sell</option>
+      </select>
+      <label for="ethereumQuantity" class="sr-only">Quantity</label>
+      <input type="number" id="ethereumQuantity" class="form-control" name="ethereumQuantity" placeholder="Quantity" autofocus>
+      <button class="btn btn-s btn-success btn-block" type="submit">Submit</button>
+  </form>
+
+
+
+
 
 </div>
 </div>

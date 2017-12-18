@@ -3,7 +3,15 @@ include '../init.php';
 session_start();
 
 $groups = new groups(getDB());
-$groups->deleteByGroupName($_POST['myBtn']);
+$groupName = $_POST['myBtn'];
 
-header( 'Location: ../views/projects.php' );
+$groupArray = $groups->getGroupId($groupName);
+$groupID = $groupArray['group_id'];
+
+//delete group record
+$groups->deleteByGroupName($_POST['myBtn']);
+//delete membership record
+$groups->deleteGroupMembers($groupID);
+
+header( 'Location: ../views/admin.php' );
 ?>

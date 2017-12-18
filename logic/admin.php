@@ -14,7 +14,7 @@ $groups->addgroup($groupName,$userID,$groupDescription);
 
 
 
-header( 'Location: ../views/projects.php' );
+header( 'Location: ../views/admin.php' );
 
 
 ?>

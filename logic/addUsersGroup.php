@@ -3,13 +3,18 @@ include '../init.php';
 session_start();
 
 $userEmailInput = $_POST['addUser'];
-$_SESSION['user_id'];
+$groupName = $_POST['myBtn'];
 
 $auth = new authentication(getDB());
-$port = new portfolio(getDB());
+$group = new groups(getDB());
 
 if($auth->checkExists($userEmailInput)){
-    var_dump($auth->getUserID($userEmailInput));
+    //obtain user_id and group ID
+    $id = $auth->getUserID($userEmailInput)['id'];
+    $groupID = $group->getGroupId($groupName)['group_id'];
+
+    //insert record
+    $group->addUser($id,$groupID);
 
 
 }else{
