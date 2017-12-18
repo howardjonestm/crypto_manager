@@ -43,6 +43,12 @@ class groups{
         return $row;
     }
 
+    //Delete group by group name
+    public function deleteByGroupName($groupName){
+        $groups = $this->db->prepare('DELETE FROM groups WHERE group_name = :groupName');
+        $groups->execute(array(':groupName'=>$groupName));       
+    }
+
 
 
 }
