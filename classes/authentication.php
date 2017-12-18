@@ -142,6 +142,14 @@ class authentication{
 
     }
 
+    //Return user ID from email 
+    public function getUserID($email){
+        $sdmt=$this->db->prepare("SELECT id from users where email = :email");
+        $sdmt->execute(array(':email'=>$email));
+        $row = $sdmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
+
  
     
 }
