@@ -2,13 +2,6 @@
 $activePage = "admin";
 include 'header.php';
 include '../init.php';
-
-
-if (!isset($_SESSION['user_id'])) {
-	//Not logged in, send to login page.
-	echo "<p>Please login to access this feature<p>";
-}
-else{
 ?>
 
 <br>
@@ -45,6 +38,8 @@ else{
 $groups = new groups(getDB());
 $groupsArray = $groups->returnUserAdmins($_SESSION['user_id']);
 
+var_dump($groupsArray);
+
 foreach($groupsArray as $groupName){
 
   echo 
@@ -59,21 +54,9 @@ foreach($groupsArray as $groupName){
       
 
       foreach($groups->getMembers($groupName) as $value){
-        
-        echo "
-        <form class=\"form-inline\" method=\"post\" action=\"../logic/deleteUserGroup.php\">
-        
-        
-        <input type=\"hidden\" class=\"form-control-plaintext\" id=\"groupName\" value=\"$groupName\" name =\"groupName\">$value</input>
-        
-        <div class=\"col\">
-        <button type=\"submit\" id=\"myBtn\" name=\"user\" \"class=\"btn btn-success\" value=\"$value\">Remove user</button>
-        </div>
-      </form>
-        ";
+        echo " $value <br>";
       }
      
-      
          
   echo 
     
@@ -86,10 +69,13 @@ foreach($groupsArray as $groupName){
         <button type=\"submit\" id=\"myBtn\" name=\"myBtn\" value=\"".$groupName." \"class=\"btn btn-success\">Add user</button>        
       </form>
 
+      <form action=\"../logic/deleteUserGroup.php\" method=\"post\">
+      <input type=\"text\" id=\"addUser\" name=\"addUser\" placeholder=\"Remove user\"></input>
+        <button type=\"submit\" id=\"myBtn\" name=\"myBtn\" value=\"".$groupName." \"class=\"btn btn-danger\">Remove user</button>        
+      </form>
+
+
       
-
-
-
       <br>
       <form action=\"../logic/deleteGroup.php\" method=\"post\">
         <button type=\"submit\" id=\"myBtn\" name=\"myBtn\" value=\"".$groupName."\"class=\"btn btn-danger\">Delete group</button>
@@ -105,6 +91,10 @@ foreach($groupsArray as $groupName){
 ?>
 
 
+
+
+
+
 </div>
 </div>
 
@@ -112,4 +102,4 @@ foreach($groupsArray as $groupName){
 
 
 
-<?php } include './footer.php'; ?>
+<?php include './footer.php'; ?>

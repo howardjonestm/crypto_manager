@@ -34,9 +34,6 @@
                     <a class="nav-link <?php if ($activePage == "investments"){echo " active\"";}else{echo " text-white\"";}?> id="investments-tab"  href="investments.php" aria-controls="home" aria-selected="true">Investments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if ($activePage == "marketData"){echo " active\"";}else{echo " text-white\"";}?> id="marketdata-tab" href="marketdata.php" aria-controls="home" aria-selected="true">Market Data</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link <?php if ($activePage == "myGroups"){echo " active\"";}else{echo " text-white\"";}?> id="myGroups-tab" href="myGroups.php" aria-controls="home" aria-selected="true">myGroups</a>
                 </li>
                 <li class="nav-item">

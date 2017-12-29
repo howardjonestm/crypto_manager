@@ -16,11 +16,16 @@ if($auth->checkExists($userEmailInput)){
     //insert record
     $group->addUser($id,$groupID);
 
+    $_SESSION['addUserSuccess']="New user added";
+
 
 }else{
-    echo "User was not found";
+    $_SESSION['addUserFailure']="User was not found";
+
+    
 }
 
+header( 'Location: ../views/admin.php' );
 
 ?>
 

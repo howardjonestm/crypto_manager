@@ -41,9 +41,6 @@ $balanceEdit->portfolioAdjustment($btcAdjustment, $ethAdjustment, $userID);
 
 
 $_SESSION['invesmentCompleted']="Your changes have been made";
-// $_SESSION['btcBalance']=$balanceArray['btc'];
-// $_SESSION['ethBalance']=$balanceArray['eth'];
-
 header( 'Location: ../views/investments.php' );
 
 ?>

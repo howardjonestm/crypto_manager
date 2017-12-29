@@ -3,7 +3,6 @@ $activePage = "admin";
 include 'header.php';
 include '../init.php';
 
-
 if (!isset($_SESSION['user_id'])) {
 	//Not logged in, send to login page.
 	echo "<p>Please login to access this feature<p>";
@@ -62,13 +61,11 @@ foreach($groupsArray as $groupName){
         
         echo "
         <form class=\"form-inline\" method=\"post\" action=\"../logic/deleteUserGroup.php\">
-        
-        
-        <input type=\"hidden\" class=\"form-control-plaintext\" id=\"groupName\" value=\"$groupName\" name =\"groupName\">$value</input>
-        
-        <div class=\"col\">
-        <button type=\"submit\" id=\"myBtn\" name=\"user\" \"class=\"btn btn-success\" value=\"$value\">Remove user</button>
+        <div class=\"form-group\">
+        <label for=\"staticEmail2\" class=\"sr-only\">$value</label>
+        <input type=\"text\" class=\"form-control-plaintext\" id=\"lol\" value=\"$value\">
         </div>
+        <button type=\"submit\" id=\"myBtn\" name=\"myBtn\" \"class=\"btn btn-link btn-warning\" value=\"$value\">Remove user</button>
       </form>
         ";
       }
@@ -103,6 +100,10 @@ foreach($groupsArray as $groupName){
 }
 
 ?>
+
+
+
+
 
 
 </div>

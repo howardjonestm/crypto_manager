@@ -150,6 +150,14 @@ class authentication{
         return $row;
     }
 
+    //Return user email from id
+    public function getUserEmail($userID){
+        $sdmt=$this->db->prepare("SELECT email from users where id = :userID");
+        $sdmt->execute(array(':userID'=>$userID));
+        $row = $sdmt->fetch(PDO::FETCH_ASSOC);
+        return $row['email'];
+    }
+
  
     
 }

@@ -27,7 +27,7 @@ else {
 ?>
 
 
-<div class="row border border-dark rounded">
+<div class="row w-85 mx-auto">
   
   <div class="col-sm">
   <form class="form-signin" action="../logic/personalInvestment.php" method="post">
@@ -39,7 +39,7 @@ else {
         <option value="sell">Sell</option>
       </select>
       <label for="bitcoinQuantity" class="sr-only">Quantity</label>
-      <input type="number" id="bitcoinQuantity" class="form-control" name="bitcoinQuantity" placeholder="Quantity" autofocus>
+      <input type="number" step="any" id="bitcoinQuantity" class="form-control" name="bitcoinQuantity" placeholder="Quantity" autofocus>
       
       <br>
 
@@ -50,12 +50,20 @@ else {
         <option value="sell">Sell</option>
       </select>
       <label for="ethereumQuantity" class="sr-only">Quantity</label>
-      <input type="number" id="ethereumQuantity" class="form-control" name="ethereumQuantity" placeholder="Quantity" autofocus>
+      <input type="number" step="any" id="ethereumQuantity" class="form-control" name="ethereumQuantity" placeholder="Quantity" autofocus>
       <button class="btn btn-l btn-primary btn-block" type="submit">Submit</button>
 
   </form>
 </div>
-<div class="col-sm bg-light rounded">
+<div class="col-sm">
+<div class="coinmarketcap-currency-widget" data-currency="bitcoin" data-base="GBP" ></div>
+<div class="coinmarketcap-currency-widget" data-currency="ethereum" data-base="GBP" ></div>
+</div>
+
+</div>
+
+
+<div class="row w-70 mx-auto">
 
 
   <?php
@@ -64,15 +72,12 @@ else {
   ?>
 
   <br><br><br>
-  <p>Your current bitcoin holdings are worth: <?php echo $balanceArray['btc'] ?> btc</p>
-  <p>At current market value, these are worth: £££</p><br>
-  <p>Your current ethereum holdings are worth: <?php echo $balanceArray['eth'] ?> etc</p>
+  <p>Your current bitcoin holdings are worth: <?php echo $balanceArray['btc'] ?> btc</p><br>
+  <p>At current market value, these are worth: £££</p><br><br>
+  <p>Your current ethereum holdings are worth: <?php echo $balanceArray['eth'] ?> etc</p><br>
   <p>At current market value, these are worth: £££</p>
-
-</div>
 </div>
 
        
-
 
   <?php include 'footer.php'; }} ?>
