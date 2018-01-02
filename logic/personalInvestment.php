@@ -13,7 +13,7 @@ function adjustment($buySell,$quantity){
         case "sell":
             $adjustment = -$quantity;
             break;
-        case "Option":
+        case "option":
             $adjustment = 0;
             break;
     }

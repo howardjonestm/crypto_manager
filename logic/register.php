@@ -20,7 +20,7 @@ $balance->addUser($_SESSION['user_id']);
 
 if (isset($_SESSION['user_id'])) {
 	//logged in, send to index page.
-	header( 'Location: ../views/home.php' );
+	header( 'Location: ../views/index.php' );
 } else{
 	$_SESSION['registererror'] = "Unfortunately this email is unavailable";	
 	header( 'Location: ../views/loginpage.php' );

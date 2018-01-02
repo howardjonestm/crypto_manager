@@ -9,7 +9,7 @@ function showHint(str) {
                 document.getElementById("txtHint").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "gethint.php?q=" + str, true);
+        xmlhttp.open("GET", "../ajax/getUserHints.php?q=" + str, true);
         xmlhttp.send();
     }
 }

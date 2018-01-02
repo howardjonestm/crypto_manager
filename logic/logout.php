@@ -4,7 +4,7 @@ session_start();
 $auth = new authentication(getDB());
 $auth->logout();
 
-header( 'Location: ../views/home.php' );
+header( 'Location: ../views/index.php' );
 
 
 ?>

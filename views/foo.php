@@ -1,116 +1,83 @@
 <?php 
-$activePage = "admin";
+$activePage = "investments";
 include 'header.php';
 include '../init.php';
+?>
+<div class="custombg1">
+
+<?php   
+ 
+ $auth = new authentication(getDB());
+ $portfolio = new portfolio(getDB());
 
 if (!isset($_SESSION['user_id'])) {
 	//Not logged in, send to login page.
-	echo "<p>Please login to access this feature<p>";
+	echo "<p class=\"blacktext\">Please login to access this feature<p>";
 }
 else{
+  //Check we have the right user
+	$logged_in = $auth->checkSession();
+	
+	if(empty($logged_in)){
+		//Bad session, ask to login
+		$auth->logout();
+		echo "<p>There was a problem connecting to your portfolio, please contact a network administrator<p>";
+  }
+else {
+		//User is logged in, show the page
 ?>
 
-<br>
-<div class="row w-75 mx-auto">
 
+<div class="row">
   
-<div class="col-sm rounded">
-    <h4>Create a new investment group</h4>
-    <p class="text-warning"><?php echo $_SESSION['groupExists']; $_SESSION['groupExists']=""; ?><hp>
-
-    <form class="form-signin" action="../logic/admin.php" method="post">
-  
-      <label for="groupName" class="sr-only">Group Name</label>
-      <input type="text" id="groupName" class="form-control" name="groupName" placeholder="Group name" autofocus>
-      <input type="text" id="groupDescription" class="form-control" name="groupDescription" placeholder="Group description" required autofocus>
-      <button class="btn btn-l btn-primary btn-block" type="submit">Submit</button>
-
-  </form>
-  
-</div>
-<div class="col-sm rounded">
-
-<p class="text-warning"> <?php echo $_SESSION['addUserFailure'];$_SESSION['addUserFailure']=""; ?> </p>
-<p class="text-success"> <?php echo $_SESSION['addUserSuccess'];$_SESSION['addUserSuccess']=""; ?> </p>
-
-<p class="text-warning"> <?php echo $_SESSION['removeUserFailure'];$_SESSION['removeUserFailure']=""; ?> </p>
-<p class="text-success"> <?php echo $_SESSION['removeUserSuccess'];$_SESSION['removeUserSuccess']=""; ?> </p>
-
-
-
-<h4>Your admin groups</h4>
-<?php 
-
-$groups = new groups(getDB());
-$groupsArray = $groups->returnUserAdmins($_SESSION['user_id']);
-
-foreach($groupsArray as $groupName){
-
-  echo 
-    "
-    <div class=\"card\" >
-    <div class=\"card-body bg-light \">
-      <h5 class=\"card-title\">".$groupName."</h5>
-      <h6 class=\"card-subtitle mb-2 text-muted\">Portfolio value:</h6>
-      <p class=\"card-text\">Description: ".$groups->returnDescription($groupName)["group_description"]."</p>    
-
-      <p class=\"card-text\"><strong>Members: </strong><br>";
-      
-
-      foreach($groups->getMembers($groupName) as $value){
+  <div class="col-md-6  borderrounding2 padding1">
+    <form class="form-signin borderrounding" action="../logic/personalInvestment.php" method="post">
+    <p class= "blacktext"><?php echo $_SESSION['invesmentCompleted']; $_SESSION['invesmentCompleted']=""; ?></p>
+        <h3 class="form-signin-heading blacktext">Bitcoin</h3>
+        <select class="custom-select" id="btcBuySell" name="btcBuySell">
+          <option selected>Option</option>
+          <option value="buy">Buy</option>
+          <option value="sell">Sell</option>
+        </select>
+        <label for="bitcoinQuantity" class="sr-only">Quantity</label>
+        <input type="number" step="any" id="bitcoinQuantity" class="form-control" name="bitcoinQuantity" placeholder="Quantity" autofocus>
         
-        echo "
-        <form class=\"form-inline\" method=\"post\" action=\"../logic/deleteUserGroup.php\">
-        <div class=\"form-group\">
-        <label for=\"staticEmail2\" class=\"sr-only\">$value</label>
-        <input type=\"text\" class=\"form-control-plaintext\" id=\"lol\" value=\"$value\">
-        </div>
-        <button type=\"submit\" id=\"myBtn\" name=\"myBtn\" \"class=\"btn btn-link btn-warning\" value=\"$value\">Remove user</button>
-      </form>
-        ";
-      }
-     
-      
-         
-  echo 
-    
-  "
-      </p>
+        <br>
 
-      
-      <form action=\"../logic/addUsersGroup.php\" method=\"post\">
-      <input type=\"text\" id=\"addUser\" name=\"addUser\" placeholder=\"Add user\"></input>
-        <button type=\"submit\" id=\"myBtn\" name=\"myBtn\" value=\"".$groupName." \"class=\"btn btn-success\">Add user</button>        
-      </form>
+        <h3 class="form-signin-heading blacktext">Ethereum</h3>
+        <select class="custom-select" id="ethBuySell" name="ethBuySell">
+          <option selected>Option</option>
+          <option value="buy">Buy</option>
+          <option value="sell">Sell</option>
+        </select>
+        <label for="ethereumQuantity" class="sr-only">Quantity</label>
+        <input type="number" step="any" id="ethereumQuantity" class="form-control" name="ethereumQuantity" placeholder="Quantity" autofocus>
+        <button class="btn btn-l btn-primary btn-block" type="submit">Submit</button>
 
-      
-
-
-
-      <br>
-      <form action=\"../logic/deleteGroup.php\" method=\"post\">
-        <button type=\"submit\" id=\"myBtn\" name=\"myBtn\" value=\"".$groupName."\"class=\"btn btn-danger\">Delete group</button>
-      </form>
-
-    </div>
+    </form>
   </div>
-  
-";
-  
-}
-
-?>
-
-
-
-
-
-
+<div class="col-md-6 custombg1 padding1">
+<div class="coinmarketcap-currency-widget bg-3 " data-currency="bitcoin" data-base="GBP" ></div>
+<div class="coinmarketcap-currency-widget bg-3" data-currency="ethereum" data-base="GBP" ></div>
 </div>
 </div>
 
+<div class="row">
+<div class="col-md-6 borderrounding3 padding1">
 
+  <?php
+  $userID = $_SESSION['user_id'];
+  $balanceArray = $portfolio->retrieveBalance($userID);
+  ?>
 
+  <p class="blacktext">Your current bitcoin holdings are worth: <?php echo $balanceArray['btc'] ?> btc</p><br>
+  <p class="blacktext">At current market value, these are worth: £££</p><br>
+  <p class="blacktext">Your current ethereum holdings are worth: <?php echo $balanceArray['eth'] ?> etc</p><br>
+  <p class="blacktext">At current market value, these are worth: £££</p>
+</div>
+<div class="col-md-6"></div>
+</div>
 
-
-<?php } include './footer.php'; ?>
+       
+</div>
+  <?php include 'footer.php'; }} ?>

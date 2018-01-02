@@ -5,18 +5,18 @@ include '../init.php';
 
 
 if (!isset($_SESSION['user_id'])) {
-	//Not logged in, send to login page.
+	
 	echo "<p>Please login to access this feature<p>";
 }
 else{
 ?>
 
 <br>
-<div class="row w-75 mx-auto">
+<div class="row">
 
   
-<div class="col-sm rounded">
-    <h4>Create a new investment group</h4>
+<div class="col-md-6 col-md-offset-3">
+    <h4 class="padding3 borderrounding7"><u>Create a new investment group</u></h4>
     <p class="text-warning"><?php echo $_SESSION['groupExists']; $_SESSION['groupExists']=""; ?><hp>
 
     <form class="form-signin" action="../logic/admin.php" method="post">
@@ -24,12 +24,15 @@ else{
       <label for="groupName" class="sr-only">Group Name</label>
       <input type="text" id="groupName" class="form-control" name="groupName" placeholder="Group name" autofocus>
       <input type="text" id="groupDescription" class="form-control" name="groupDescription" placeholder="Group description" required autofocus>
-      <button class="btn btn-l btn-primary btn-block" type="submit">Submit</button>
+      <button class="btn btn-l btn-primary btn-block" type="submit">Add group</button>
 
   </form>
-  
+</div>  
 </div>
-<div class="col-sm rounded">
+<br><br>
+<div class="row">
+<div class="col-md-6 col-md-offset-3 rounded">
+<h4 class="padding3 borderrounding7"><u>Edit your existing admin groups</u></h4>
 
 <p class="text-warning"> <?php echo $_SESSION['addUserFailure'];$_SESSION['addUserFailure']=""; ?> </p>
 <p class="text-success"> <?php echo $_SESSION['addUserSuccess'];$_SESSION['addUserSuccess']=""; ?> </p>
@@ -37,9 +40,6 @@ else{
 <p class="text-warning"> <?php echo $_SESSION['removeUserFailure'];$_SESSION['removeUserFailure']=""; ?> </p>
 <p class="text-success"> <?php echo $_SESSION['removeUserSuccess'];$_SESSION['removeUserSuccess']=""; ?> </p>
 
-
-
-<h4>Your admin groups</h4>
 <?php 
 
 $groups = new groups(getDB());
@@ -49,13 +49,13 @@ foreach($groupsArray as $groupName){
 
   echo 
     "
-    <div class=\"card\" >
-    <div class=\"card-body bg-light \">
-      <h5 class=\"card-title\">".$groupName."</h5>
-      <h6 class=\"card-subtitle mb-2 text-muted\">Portfolio value:</h6>
+    <div class=\"borderrounding4 padding3\" >
+    
+      <h4 class=\"greybackground padding3 borderrounding5\">".$groupName." (Total value: xxx)</h4>
+      
       <p class=\"card-text\">Description: ".$groups->returnDescription($groupName)["group_description"]."</p>    
 
-      <p class=\"card-text\"><strong>Members: </strong><br>";
+      <p class=\"card-text\"><strong>Members: </strong><br></p>";
       
 
       foreach($groups->getMembers($groupName) as $value){
@@ -64,11 +64,11 @@ foreach($groupsArray as $groupName){
         <form class=\"form-inline\" method=\"post\" action=\"../logic/deleteUserGroup.php\">
         
         
-        <input type=\"hidden\" class=\"form-control-plaintext\" id=\"groupName\" value=\"$groupName\" name =\"groupName\">$value</input>
+        <input type=\"hidden\" class=\"form-control\" id=\"groupName\" value=\"$groupName\" name =\"groupName\">$value</input>
         
-        <div class=\"col\">
-        <button type=\"submit\" id=\"myBtn\" name=\"user\" \"class=\"btn btn-success\" value=\"$value\">Remove user</button>
-        </div>
+        
+        <button type=\"submit\" id=\"myBtn\" name=\"user\" class=\"btn btn-danger\" value=\"$value\">Remove user</button>
+        
       </form>
         ";
       }
@@ -78,17 +78,16 @@ foreach($groupsArray as $groupName){
   echo 
     
   "
-      </p>
-
+      
+<br>
       
       <form action=\"../logic/addUsersGroup.php\" method=\"post\">
-      <input type=\"text\" id=\"addUser\" name=\"addUser\" placeholder=\"Add user\"></input>
+      <input type=\"text\" class=\"blacktext\" id=\"addUser\" name=\"addUser\" placeholder=\"Add user\" onkeyup=\"showHint(this.value)\"></input>
         <button type=\"submit\" id=\"myBtn\" name=\"myBtn\" value=\"".$groupName." \"class=\"btn btn-success\">Add user</button>        
       </form>
 
+      <p>Suggestions: <br><span class=\"txtHint\" id=\"txtHint\"></span></p>
       
-
-
 
       <br>
       <form action=\"../logic/deleteGroup.php\" method=\"post\">
@@ -96,7 +95,7 @@ foreach($groupsArray as $groupName){
       </form>
 
     </div>
-  </div>
+  
   
 ";
   
@@ -104,7 +103,7 @@ foreach($groupsArray as $groupName){
 
 ?>
 
-
+</div>
 </div>
 </div>
 

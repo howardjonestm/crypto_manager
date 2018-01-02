@@ -18,14 +18,14 @@ else{
 ?>
 
 <div class="container">
-  <div class="row">
-  <div class="col-sm">
+  <div class="row bg-1 padding2">
+  <div class="col-md-6 borderrounding2">
 
   <form action="../logic/myGroups.php" method="post">
 
   <div class="form-group">
     <label for="sel1">Select group:</label>
-    <select class="form-control" id="groupName" name="groupName">
+    <select class="form-control" id="groupName" name="groupName" onchange="show>
 
   <?php 
   foreach($groupsList as $value){
@@ -37,7 +37,7 @@ else{
 
     <p class= "text-success"><?php echo $_SESSION['invesmentCompleted']; $_SESSION['invesmentCompleted']=""; ?></p>
         <h3 class="form-signin-heading">Bitcoin</h3>
-        <select class="custom-select col" id="btcBuySell" name="btcBuySell">
+        <select class="form-control col" id="btcBuySell" name="btcBuySell">
           <option selected>Option</option>
           <option value="buy">Buy</option>
           <option value="sell">Sell</option>
@@ -48,7 +48,7 @@ else{
         <br>
 
         <h3 class="form-signin-heading">Ethereum</h3>
-        <select class="custom-select col" id="ethBuySell" name="ethBuySell">
+        <select class="form-control col" id="ethBuySell" name="ethBuySell">
           <option selected>Option</option>
           <option value="buy">Buy</option>
           <option value="sell">Sell</option>
@@ -63,7 +63,7 @@ else{
 
   </div>
 
-  <div class="col-sm">
+  <div class="col-md-6">
   <p>Investment history will go here</p>
   </div>
   
@@ -71,8 +71,8 @@ else{
 </div>
 
 
-<div class="row">
-<p>Groups leader board will go here</p>
+<div class="col-md-6 col-md-offset-3 bg-2">
+<h3 class="blacktext">Groups portfolio info</h3>
 
 </div>
 </div>

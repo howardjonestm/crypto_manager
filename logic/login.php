@@ -10,7 +10,7 @@ $auth = new authentication(getDB());
 $auth->login($Email, $Password);
 
 if(isset($_SESSION['user_id'])){
-    header ('Location: ../views/home.php');
+    header ('Location: ../views/index.php');
 }
 else{
     $_SESSION['loginerror'] = "There was a problem with your login details, please try again";

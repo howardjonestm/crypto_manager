@@ -2,14 +2,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Simply Me</title>
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
+  <script src="../scripts/showHints.js"></script>
+
+
   <style>
   body {
       font: 20px Montserrat, sans-serif;
@@ -17,6 +20,80 @@
       color: #f5f6f7;
   }
   p {font-size: 16px;}
+
+  .blacktext {color: #010101}
+  .investmentdark {background-color: #585757 }
+  .investmentgreen {color: #1abc9c }
+  .custombg1 {background-color: #e8eaea}
+  .greybackground {background-color: #817F7F}
+  .borderrounding {
+        border-radius: 15px 50px 30px;      
+        margin-bottom: 2cm;
+        background-color: #c0c5c5;
+    }
+    .borderrounding2 {
+        border-radius: 15px 50px 30px;      
+        margin-bottom: 2cm;
+        border: 2px solid #f5f6f7;
+        background-color: #c0c5c5;;
+    }
+    .borderrounding3 {
+        border-radius: 30px 50px 15px;      
+        margin-bottom: 2cm;
+        border: 2px solid #f5f6f7;
+        background-color: #c5c0c5;
+    }
+
+    .borderrounding3 {
+        border-radius: 15px 30px 50px;      
+        margin-bottom: 2cm;
+        border: 2px solid #C9C8C8;
+        background-color: #EEECEC;
+    }
+
+    .borderrounding4 {
+        border-radius: 15px 30px 50px;      
+        margin-bottom: 0.75cm;
+        border: 2px solid #C9C8C8;
+        background-color: #585757;
+    }
+
+    .borderrounding5 {
+        border-radius: 15px 30px 50px;      
+        margin-bottom: 0.4cm;
+        border: 0.5px solid #C9C8C8;
+        background-color: #817F7F;
+    }
+
+    .borderrounding6 {
+        border-radius: 15px 30px 50px;      
+        margin-bottom: 0.75cm;
+        border: 2px solid #C9C8C8;
+        background-color: #A3A2A2;
+    }
+
+    .borderrounding7 {
+        border-radius: 15px 30px 50px;      
+        margin-bottom: 0.75cm;
+        border: 2px solid #C9C8C8;
+        background-color: #D3D3D3;
+        color: #2D2929
+    }
+
+    .padding1{
+        padding: 1cm 1cm;
+    }
+
+    .padding2{
+        padding: 1cm 1cm;
+    }
+
+    .padding3{
+        padding: 0.5cm 0.5cm;
+    }
+
+    
+
   .margin {margin-bottom: 45px;}
   .bg-1 { 
       background-color: #1abc9c; /* Green */
@@ -68,7 +145,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="./investments.php">Investments</a></li>
-        <li><a href="./myGroups.php">myGroups</a></li>       
+        <li><a href="./myGroups.php">myGroups</a></li> 
+        <li><a href="./admin.php">Admin</a></li>         
         <li>
             <?php
                 if (!isset($_SESSION['user_id'])){  

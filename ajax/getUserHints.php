@@ -18,7 +18,7 @@ if ($q !== ""){
             if ($hint === ""){
                 $hint = $email;
             }else{
-                $hint .= ", $email";
+                $hint .= "<br> $email";
            
             }
 
@@ -27,6 +27,6 @@ if ($q !== ""){
 }
 
 //Output "no suggestion" if no hint was found or output correct values
-echo $hint === "" ? "no suggestion" : $hint;
+echo $hint === "" ? "no suggestion" : "$hint";
 
 ?>
