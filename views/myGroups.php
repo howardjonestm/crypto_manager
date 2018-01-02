@@ -6,7 +6,6 @@ include 'header.php';
 $userID = $_SESSION['user_id'];
 
 $group = new groups(getDB());
-
 $groupsList = $group->getGroups($userID);
 
 if (!isset($_SESSION['user_id'])) {
@@ -25,17 +24,19 @@ else{
 
   <div class="form-group">
     <label for="sel1">Select group:</label>
-    <select class="form-control" id="groupName" name="groupName" onchange="show>
+    <select class="form-control" id="groupName" name="groupName" onchange="getTransactions(this.value)">
 
   <?php 
+  echo "<option selected>Select</option>";
   foreach($groupsList as $value){
       echo "<option>$value</option>";
   }
   ?>
   </select>
-  <strong>Select action</strong>
+  
 
     <p class= "text-success"><?php echo $_SESSION['invesmentCompleted']; $_SESSION['invesmentCompleted']=""; ?></p>
+    <strong>Make changes</strong>
         <h3 class="form-signin-heading">Bitcoin</h3>
         <select class="form-control col" id="btcBuySell" name="btcBuySell">
           <option selected>Option</option>
@@ -64,15 +65,21 @@ else{
   </div>
 
   <div class="col-md-6">
-  <p>Investment history will go here</p>
+  <div id="getTrans"><b>Please select a group</b></div>
   </div>
   
 
 </div>
 
 
-<div class="col-md-6 col-md-offset-3 bg-2">
-<h3 class="blacktext">Groups portfolio info</h3>
+<div class="col-md-12 borderrounding2 bg-2">
+<center><h3 class="whitetext" ><u>Groups portfolio info</u></h3><center><br>
+
+<?php
+$group = new groupPortfolioAnalytics(getDB());
+//var_dump($group->returnEthBalance("12121"));
+$groupsList = $group->returnGroupPerformance();
+?>
 
 </div>
 </div>

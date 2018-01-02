@@ -25,7 +25,7 @@ $url = "https://api.coinmarketcap.com/v1/ticker/";
 $json = file_get_contents($url);
 $data = json_decode($json, TRUE);
 $btc_current_price=$data[0]['price_usd'];
-$eth_current_price=$data[1]['price_usd'];
+$eth_current_price=$data[2]['price_usd'];
 
 //calculate portfolio adjustments
 $btcBuySell = $_POST["btcBuySell"];
@@ -46,8 +46,8 @@ $email = $emailRetrieve->getUserEmail($_SESSION['user_id']);
 
 $groupName = $_POST['groupName'];
 
-echo "$groupName \n$email\n $time\n $eth_adjustment\n
-$btc_adjustment\n $eth_current_price\n $btc_current_price\n";
+// echo "$groupName \n$email\n $time\n $eth_adjustment\n
+// $btc_adjustment\n $eth_current_price\n $btc_current_price\n";
 
 
 //insert transaction record 
@@ -57,6 +57,6 @@ $btc_adjustment, $eth_current_price, $btc_current_price);
 
 
 $_SESSION['invesmentCompleted']="Your changes have been made";
-//header( 'Location: ../views/myGroups.php' );
+header( 'Location: ../views/myGroups.php' );
 
 ?>

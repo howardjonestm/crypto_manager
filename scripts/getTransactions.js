@@ -1,6 +1,6 @@
 function getTransactions(str) {
     if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
+        document.getElementById("getTrans").innerHTML = "";
         return;
     } else { 
         if (window.XMLHttpRequest) {
@@ -12,10 +12,10 @@ function getTransactions(str) {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
+                document.getElementById("getTrans").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","getTransactionHistory.php?q="+str,true);
+        xmlhttp.open("GET","../ajax/getTransactionHistory.php?q="+str,true);
         xmlhttp.send();
     }
 }

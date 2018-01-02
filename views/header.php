@@ -11,6 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
   <script src="../scripts/showHints.js"></script>
+  <script src="../scripts/getTransactions.js"></script>
 
 
   <style>
@@ -22,6 +23,7 @@
   p {font-size: 16px;}
 
   .blacktext {color: #010101}
+  .whitetext {color: #FFF9F9}
   .investmentdark {background-color: #585757 }
   .investmentgreen {color: #1abc9c }
   .custombg1 {background-color: #e8eaea}

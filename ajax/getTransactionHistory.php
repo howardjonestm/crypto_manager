@@ -22,10 +22,11 @@ th {text-align: left;}
 <body>
 
 <?php
-$q = intval($_GET['q']);
+$q = $_GET['q'];
+
 
 $transactions = new groupPortfolioAnalytics(getDB());
-$transactionArray=$transactions->returnTransaction('Howard\'s group');
+$transactionArray=$transactions->returnTransaction($q);
 
 
 
