@@ -3,16 +3,19 @@ $activePage = "myGroups";
 include '../init.php';
 include 'header.php';
 
-$userID = $_SESSION['user_id'];
 
-$group = new groups(getDB());
-$groupsList = $group->getGroups($userID);
+
+
 
 if (!isset($_SESSION['user_id'])) {
 	//Not logged in, send to login page.
 	echo "<p class=\"blacktext\">Please login to access this feature<p>";
 }
 else{
+
+$userID = $_SESSION['user_id'];
+$group = new groups(getDB());
+$groupsList = $group->getGroups($userID);
 
 ?>
 
