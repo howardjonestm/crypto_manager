@@ -3,8 +3,7 @@ $activePage = "investments";
 include 'header.php';
 include '../init.php';
 ?>
-<div class="container">
-<div class="custombg1 container-fluid padding1 bg-1">
+
 
 <?php   
  
@@ -27,7 +26,8 @@ else{
 else {
 		//User is logged in, show the page
 ?>
-
+<div class="container">
+<div class="custombg1 container-fluid padding1 bg-1">
 
 <div class="row">
   

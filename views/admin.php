@@ -6,7 +6,7 @@ include '../init.php';
 
 if (!isset($_SESSION['user_id'])) {
 	
-	echo "<p>Please login to access this feature<p>";
+	echo "<p class=\"blacktext\">Please login to access this feature<p>";
 }
 else{
 ?>
@@ -111,4 +111,4 @@ foreach($groupsArray as $groupName){
 
 
 
-<?php } include './footer.php'; ?>
+<?php include './footer.php';}  ?>
