@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.19, for osx10.12 (x86_64)
 --
--- Host: localhost    Database: s6
+-- Host: localhost    Database: crypto_manager
 -- ------------------------------------------------------
 -- Server version	5.7.19
 
@@ -16,171 +16,107 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `s6`
+-- Table structure for table `balances`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `s6` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `s6`;
-
---
--- Table structure for table `bet`
---
-
-DROP TABLE IF EXISTS `bet`;
+DROP TABLE IF EXISTS `balances`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `bet` (
-  `betid` int(11) NOT NULL AUTO_INCREMENT,
-  `customerid` int(11) NOT NULL,
-  `betWeekid` int(11) NOT NULL,
-  `datePlaced` date NOT NULL,
-  PRIMARY KEY (`betid`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+CREATE TABLE `balances` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `btc` double NOT NULL,
+  `eth` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `bet`
+-- Dumping data for table `balances`
 --
 
-LOCK TABLES `bet` WRITE;
-/*!40000 ALTER TABLE `bet` DISABLE KEYS */;
-INSERT INTO `bet` VALUES (27,1,2,'2017-10-18'),(28,1,2,'2017-10-18'),(29,1,8,'2017-10-18'),(30,3,1,'2017-10-19'),(31,3,1,'2017-10-19');
-/*!40000 ALTER TABLE `bet` ENABLE KEYS */;
+LOCK TABLES `balances` WRITE;
+/*!40000 ALTER TABLE `balances` DISABLE KEYS */;
+INSERT INTO `balances` VALUES (1,1,0,0),(2,2,10,10),(3,3,0,0),(4,4,0,0),(5,5,0,0),(6,6,0,0),(7,7,0,0),(8,8,0,0),(9,9,162,-10),(10,10,46,34),(11,11,0,0),(12,12,0,0),(13,13,125.33330000000001,-50),(14,14,0,0),(15,15,87.6665446,-100),(16,16,0,0),(17,17,950,0),(18,18,258.344,109.4334),(19,19,0,0);
+/*!40000 ALTER TABLE `balances` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `betSelection`
+-- Table structure for table `group_membership`
 --
 
-DROP TABLE IF EXISTS `betSelection`;
+DROP TABLE IF EXISTS `group_membership`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `betSelection` (
-  `betSelectionid` int(11) NOT NULL AUTO_INCREMENT,
-  `betid` int(11) NOT NULL,
-  `playerid` int(11) NOT NULL,
-  `didScore` int(1) NOT NULL,
-  `betWeekid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`betSelectionid`)
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `betSelection`
---
-
-LOCK TABLES `betSelection` WRITE;
-/*!40000 ALTER TABLE `betSelection` DISABLE KEYS */;
-INSERT INTO `betSelection` VALUES (121,27,1,1,2),(122,27,2,1,2),(123,27,3,1,2),(124,27,4,1,2),(125,27,6,0,2),(126,27,7,0,2),(127,28,1,0,2),(128,28,2,0,2),(129,28,5,0,2),(130,28,4,0,2),(131,28,6,0,2),(132,28,9,0,2),(133,29,1,1,8),(134,29,2,1,8),(135,29,3,1,8),(136,29,4,1,8),(137,29,5,1,8),(138,29,6,1,8),(139,31,4,0,1),(140,31,8,1,1),(141,31,9,0,1),(142,31,10,0,1),(143,31,12,0,1),(144,31,16,1,1);
-/*!40000 ALTER TABLE `betSelection` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `betWeek`
---
-
-DROP TABLE IF EXISTS `betWeek`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `betWeek` (
-  `betweekid` int(11) NOT NULL AUTO_INCREMENT,
-  `startDate` date NOT NULL,
-  `endDate` date DEFAULT NULL,
-  PRIMARY KEY (`betweekid`)
+CREATE TABLE `group_membership` (
+  `user_id` int(11) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `betWeek`
+-- Dumping data for table `group_membership`
 --
 
-LOCK TABLES `betWeek` WRITE;
-/*!40000 ALTER TABLE `betWeek` DISABLE KEYS */;
-/*!40000 ALTER TABLE `betWeek` ENABLE KEYS */;
+LOCK TABLES `group_membership` WRITE;
+/*!40000 ALTER TABLE `group_membership` DISABLE KEYS */;
+INSERT INTO `group_membership` VALUES (1,28),(6,28),(1,27),(13,NULL),(13,NULL),(13,41),(14,43),(1,43),(3,43),(14,46),(14,48),(15,49),(3,49),(NULL,NULL),(NULL,NULL),(NULL,NULL),(16,50),(3,50),(17,54),(3,53),(18,57),(18,58),(16,57),(3,57);
+/*!40000 ALTER TABLE `group_membership` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `customer`
+-- Table structure for table `group_transaction`
 --
 
-DROP TABLE IF EXISTS `customer`;
+DROP TABLE IF EXISTS `group_transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `customer` (
-  `customerid` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(60) DEFAULT NULL,
-  `dob` datetime DEFAULT NULL,
-  PRIMARY KEY (`customerid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `customer`
---
-
-LOCK TABLES `customer` WRITE;
-/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Harry','$2y$10$2j55pjSa7b.5EMs2GtZRYOhIsxVvwz8N..0FDA0ZVY6B2S36b7uPG','1994-02-02 00:00:00'),(2,'James','$2y$10$Sbzx3WmSH9AzdX7BjLC1E.3YmQ83lQffGOhDXoDj5BZa/LL5SGQ8q','1988-02-10 00:00:00'),(3,'luke','$2y$10$cbLLyiOi9f/8Sc8IrsJbLufBMZdWww6tn0Uejaqk9wgYVNePG8Tfa','1992-01-14 00:00:00'),(4,'howardjonestm','$2y$10$AjZ7aNEvYBJ0RdsRdD7hEuAjLKYO24xL6NLdkQpJ5q/tWuJMltlti','1990-09-01 00:00:00'),(5,'qwerty','$2y$10$MWcON608Y4kmhMO/Sogaz.54KcThwCMi6ajnC1SeAnXYn9HDCTPXy','1990-09-01 00:00:00'),(6,'hjhj007','$2y$10$mmGaSekW3ZDxCNjKYFM9MuHCUEpueS1AbhZJcgg4aTBWPTJyutV3O','1995-09-01 00:00:00');
-/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `player`
---
-
-DROP TABLE IF EXISTS `player`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `player` (
-  `playerid` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`playerid`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `player`
---
-
-LOCK TABLES `player` WRITE;
-/*!40000 ALTER TABLE `player` DISABLE KEYS */;
-INSERT INTO `player` VALUES (1,'Ademola Lookman'),(2,'Ahmed Musa'),(3,'Alexis Sanchez'),(4,'Ashley Barnes'),(5,'Ayoze Perez'),(6,'Benik Afobe'),(7,'Callum Wilson'),(8,'Christian Benteke'),(9,'Connor Wickham'),(10,'Danny Welbeck'),(11,'Diego Costa'),(12,'Freddie Ladapo'),(13,'Islam Slimani'),(14,'Jamie Vardy'),(15,'Jermain Defoe'),(16,'Joshua King'),(17,'Nahki Wells'),(18,'Olivier Giroud'),(19,'Oumar Niasse'),(20,'Sergio Aguero'),(21,'Theo Walcott');
-/*!40000 ALTER TABLE `player` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `playerWeek`
---
-
-DROP TABLE IF EXISTS `playerWeek`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `playerWeek` (
-  `playerid` int(11) NOT NULL,
-  `weekid` int(11) NOT NULL,
-  `didScore` int(1) NOT NULL
+CREATE TABLE `group_transaction` (
+  `group_name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `timestamp` int(12) DEFAULT NULL,
+  `eth_change` double NOT NULL,
+  `btc_change` double NOT NULL,
+  `eth_market_value` double NOT NULL,
+  `btc_market_value` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `playerWeek`
+-- Dumping data for table `group_transaction`
 --
 
-LOCK TABLES `playerWeek` WRITE;
-/*!40000 ALTER TABLE `playerWeek` DISABLE KEYS */;
-INSERT INTO `playerWeek` VALUES (1,2,1),(2,2,1),(3,2,1),(4,2,1),(5,2,1),(16,2,1),(8,4,1),(1,7,1),(2,7,1),(3,7,1),(4,7,1),(5,7,1),(6,7,1),(7,7,1),(8,7,1),(9,7,1),(10,7,1),(11,7,1),(12,7,1),(13,7,1),(14,7,1),(15,7,1),(16,7,1),(17,7,1),(18,7,1),(19,7,1),(20,7,1),(21,7,1),(1,8,1),(2,8,1),(3,8,1),(4,8,1),(5,8,1),(6,8,1),(7,8,1),(1,1,1),(2,1,1),(3,1,1),(6,1,1),(8,1,1),(14,1,1),(16,1,1),(19,1,1);
-/*!40000 ALTER TABLE `playerWeek` ENABLE KEYS */;
+LOCK TABLES `group_transaction` WRITE;
+/*!40000 ALTER TABLE `group_transaction` DISABLE KEYS */;
+INSERT INTO `group_transaction` VALUES ('Newdffdg','1234@1234',1513689436,12,12,841.616,18338.2),('','1234@1234',1513689684,0,0,842.659,18411.1),('6@6 Leeds the way','6@6',1513689867,-13.44,12.22,842.659,18411.1),('Judith\'s group','judith@judith',1513714594,-12.44444,12.2222,846.944,18168.3),('Melissa\'s group','Melissa@Melissa',1514135172,-10900,1000,665.249,13472.6),('This is melissa\'s group','Melissa@Melissa',1514463196,12.22,100,713.061,14376.7),('This a new group','56@56',1514556302,-100,100,751.931,14528.4),('Howard\'s group','56@56',1514914843,0,0,2.41471,14021),('Howard\'s group','56@56',1514916395,-1222,12,2.43757,14015.6),('sdffdf','56@56',1514918307,122,-12,2.42106,14549),('sdffdf','56@56',1514918338,122,-12,2.42106,14549),('Howard\'s group','56@56',1514918370,-12,12,2.39224,14549),('sdffdf','56@56',1514918449,122,122,2.39224,14656),('Howard\'s group','56@56',1514919022,23,23,897.363,14743.7),('Howard\'s group','56@56',1514919049,122,122,893.337,14817.8),('Select','56@56',1514919175,-122,122,893.337,14817.8),('Select','56@56',1514919177,0,0,893.337,14817.8),('Select','56@56',1514919183,-233,-233,893.337,14817.8),('sdffdf','56@56',1514925621,0,12,872.567,15190.6),('sdffdf','56@56',1514939167,12.3333,12.233,889.876,15100.6);
+/*!40000 ALTER TABLE `group_transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Current Database: `crypto_manager`
+-- Table structure for table `groups`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `crypto_manager` /*!40100 DEFAULT CHARACTER SET utf8 */;
+DROP TABLE IF EXISTS `groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groups` (
+  `group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_name` varchar(50) NOT NULL,
+  `admin_user` int(11) NOT NULL,
+  `group_description` varchar(300) NOT NULL,
+  PRIMARY KEY (`group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-USE `crypto_manager`;
+--
+-- Dumping data for table `groups`
+--
+
+LOCK TABLES `groups` WRITE;
+/*!40000 ALTER TABLE `groups` DISABLE KEYS */;
+INSERT INTO `groups` VALUES (1,'12121',9,'dfgfdfdgdg'),(2,'Project uno',10,'A group of friends investing in bitcoin together '),(3,'Project dos',10,'A group of friends investing in ethmereu together '),(4,'bhbhbh',11,'bhbhbh'),(5,'New dfdsf',11,'fsgsfdg'),(6,'New dfdsfyrty',11,'fsgsfdgttr'),(7,'My new projecy',11,'A quick and easy description '),(26,'sfsddsgf',12,'sdfgfsdsfg'),(27,'sfsdfgs',12,'fsgfsdgdg'),(28,'qwert',12,'qwert'),(41,'NewGroupForFUn',13,'A new investment group'),(43,'6@6 Leeds the way',14,'A selection of people who know what they\'re doing '),(46,'blahBlah',14,'fwerrewrrewerw'),(48,'trereert',14,'gddfgdggfd'),(49,'Judith\'s group',15,'blah blah blah'),(50,'This is a new group',16,'blah blah blah'),(53,'This is melissa\'s group',17,'Melissa work friends investment group '),(54,'Another group by Melissa',17,'Things are happening here '),(57,'Howard\'s group',18,'A new investment group'),(58,'sdffdf',18,'sdfds');
+/*!40000 ALTER TABLE `groups` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `logged_in_member`
@@ -195,7 +131,7 @@ CREATE TABLE `logged_in_member` (
   `session_id` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `token` char(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +140,7 @@ CREATE TABLE `logged_in_member` (
 
 LOCK TABLES `logged_in_member` WRITE;
 /*!40000 ALTER TABLE `logged_in_member` DISABLE KEYS */;
-INSERT INTO `logged_in_member` VALUES (3,8,'98b71b6b01090af695e49d9b1f3651e1','b936cee86c9f87aa5d3c6f2e84cb5a4239a5fe50480a6ec66b70ab5b1f4ac6730c6c515421b327ec1d69402e53dfb49ad7381eb067b338fd7b0cb22247225d47');
+INSERT INTO `logged_in_member` VALUES (8,10,'4f441c1e221c478af630278e85b57f16','b936cee86c9f87aa5d3c6f2e84cb5a4239a5fe50480a6ec66b70ab5b1f4ac6730c6c515421b327ec1d69402e53dfb49ad7381eb067b338fd7b0cb22247225d47'),(9,11,'4f441c1e221c478af630278e85b57f16','b936cee86c9f87aa5d3c6f2e84cb5a4239a5fe50480a6ec66b70ab5b1f4ac6730c6c515421b327ec1d69402e53dfb49ad7381eb067b338fd7b0cb22247225d47'),(15,15,'4f441c1e221c478af630278e85b57f16','b936cee86c9f87aa5d3c6f2e84cb5a4239a5fe50480a6ec66b70ab5b1f4ac6730c6c515421b327ec1d69402e53dfb49ad7381eb067b338fd7b0cb22247225d47');
 /*!40000 ALTER TABLE `logged_in_member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +157,7 @@ CREATE TABLE `users` (
   `password` char(128) NOT NULL,
   `user_salt` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,7 +166,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'123','b6f3a6ccef0313776da81e420032bac387a0b9e8c03cb373fc9867e1b16eaf40de476be5d8a8d5a1ea4078295b12d9a62190dc9f780c06a8c0b64c0a1f7efca9','123'),(2,'432','2a1c6afcf4070cd58cad8a24795c60f938b7e21ffbd259dc2565a634ff8a248bbf6b5c662f35dab4ab4f18a9b709d061543ec86c6bf94347e77214247402ee4b','123'),(3,'543','83ddc58c832fbc749edfa4c2941399249ad684a3aeddc93acf6b854e32e92c6b476499109714351a725a09260c4bcc5cb4f80394aaeba6892385a72b3d494539','123'),(4,'ashley','b6f3a6ccef0313776da81e420032bac387a0b9e8c03cb373fc9867e1b16eaf40de476be5d8a8d5a1ea4078295b12d9a62190dc9f780c06a8c0b64c0a1f7efca9','123'),(5,'123321','47f29fbfe0c92d0ab2431dc9cdb917e9dd171cc23c9eaf7f373b99c8308df50067983a3715e473cd68fdfe24b6624ab9b23a3c9532bf175d3aef45f6d94a2361','123'),(6,'fasdfdsdf','e7e0d86d9fc76ea19267796ea7159ee8c5bb7004413b3c808d2df6bd8a735daa9987349cfb5ff7909a9c926c530b9517eaa10a35e0a39d776dc560ba007354ed','123'),(7,'qwerty','14dad1d5508e1d059837524c62d9f1e9c029ad3310d7a278206c66d5883135986cfb53fd98e438f8f612e5c88d8313893e7e616e3741be317e2c2006ca894255','123'),(8,'zxcv','c9f399fad37e9125323dbe782ea7dd10b86de0c4e7c919db8531173a26ed6c8a106328c46a73b3a9cd361ed2b4ce0dd8bfd207afd0d3c3cbe768200f190c9967','123');
+INSERT INTO `users` VALUES (1,'qwerty','14dad1d5508e1d059837524c62d9f1e9c029ad3310d7a278206c66d5883135986cfb53fd98e438f8f612e5c88d8313893e7e616e3741be317e2c2006ca894255','123'),(2,'1234','fec26731ef4ddbb306192e6c2d3607e8de134ba76d66c71680628871f650d7c0cbbe913716eb77f301b8b9efc9e61f194827d8debbe9c079a5c9923cad71a5cd','123'),(3,'howard.j@live.co.uk','5791d3023a55571910aaaac78b84742cf841dbc3595c2894b4d4740534976a933db20479aee282cc9112ad06ebff4fd61096b4b695c18e657f5b842940e9f0f0','123'),(4,'howard.j@live.co.uk3','5791d3023a55571910aaaac78b84742cf841dbc3595c2894b4d4740534976a933db20479aee282cc9112ad06ebff4fd61096b4b695c18e657f5b842940e9f0f0','123'),(5,'dogdog@dog.dog','b6f3a6ccef0313776da81e420032bac387a0b9e8c03cb373fc9867e1b16eaf40de476be5d8a8d5a1ea4078295b12d9a62190dc9f780c06a8c0b64c0a1f7efca9','123'),(6,'1@1','b6f3a6ccef0313776da81e420032bac387a0b9e8c03cb373fc9867e1b16eaf40de476be5d8a8d5a1ea4078295b12d9a62190dc9f780c06a8c0b64c0a1f7efca9','123'),(7,'12@12','0755e7833cbc4c544aa8a4483434d9142884031fd53d211d85e98c47e9b0a8b850ac791f842c7f58ce19503b76e2a43d1e09e7adca113c75a79171dd7aa83834','123'),(8,'4@4','5e182c2e6b3bc0a2656e5c0f0f74c831477862eb6c06b578203f58e2713eb0c920215a473e0045b4c2ad9fd185d98031d2e13eb0347f0cb7b5c623e3d447cb76','123'),(9,'5@5','5e182c2e6b3bc0a2656e5c0f0f74c831477862eb6c06b578203f58e2713eb0c920215a473e0045b4c2ad9fd185d98031d2e13eb0347f0cb7b5c623e3d447cb76','123'),(10,'C@M','5e182c2e6b3bc0a2656e5c0f0f74c831477862eb6c06b578203f58e2713eb0c920215a473e0045b4c2ad9fd185d98031d2e13eb0347f0cb7b5c623e3d447cb76','123'),(11,'1@3','b6f3a6ccef0313776da81e420032bac387a0b9e8c03cb373fc9867e1b16eaf40de476be5d8a8d5a1ea4078295b12d9a62190dc9f780c06a8c0b64c0a1f7efca9','123'),(12,'1@32','b6f3a6ccef0313776da81e420032bac387a0b9e8c03cb373fc9867e1b16eaf40de476be5d8a8d5a1ea4078295b12d9a62190dc9f780c06a8c0b64c0a1f7efca9','123'),(13,'1234@1234','fec26731ef4ddbb306192e6c2d3607e8de134ba76d66c71680628871f650d7c0cbbe913716eb77f301b8b9efc9e61f194827d8debbe9c079a5c9923cad71a5cd','123'),(14,'6@6','fec26731ef4ddbb306192e6c2d3607e8de134ba76d66c71680628871f650d7c0cbbe913716eb77f301b8b9efc9e61f194827d8debbe9c079a5c9923cad71a5cd','123'),(15,'judith@judith','b6f3a6ccef0313776da81e420032bac387a0b9e8c03cb373fc9867e1b16eaf40de476be5d8a8d5a1ea4078295b12d9a62190dc9f780c06a8c0b64c0a1f7efca9','123'),(16,'2345@2345','76c454279b4570d91edb2e20aee6dabfe780234bfff9aff583fb049637c6511200ab8ae19eabb686c370de89b53db8fb8dc47e04e6da2a22edf5d59a477d7234','123'),(17,'Melissa@Melissa','fec26731ef4ddbb306192e6c2d3607e8de134ba76d66c71680628871f650d7c0cbbe913716eb77f301b8b9efc9e61f194827d8debbe9c079a5c9923cad71a5cd','123'),(18,'56@56','ac0cb09ac7ce98c4ccf4b6be8dd071296ca5dd8c82f82a7a9a2a0d9dfbc1e3595bac16478778c866c7f046dd557584cc294442f7a8d87e37b0269f9067161258','123'),(19,'123123@123123','b6f3a6ccef0313776da81e420032bac387a0b9e8c03cb373fc9867e1b16eaf40de476be5d8a8d5a1ea4078295b12d9a62190dc9f780c06a8c0b64c0a1f7efca9','123');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -243,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-10 12:24:16
+-- Dump completed on 2018-01-03 11:47:31

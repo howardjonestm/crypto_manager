@@ -10,14 +10,28 @@ $groupsList = $group->getGroups($userID);
 
 if (!isset($_SESSION['user_id'])) {
 	//Not logged in, send to login page.
-	echo "<p>Please login to access this feature<p>";
+	echo "<p class=\"blacktext\">Please login to access this feature<p>";
 }
 else{
 
 ?>
 
+<style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+th {text-align: left;}
+</style>
+
 <div class="container">
-  <div class="row bg-1 padding2">
+  <div class="row bg-1 padding2 borderrounding8">
   <div class="col-md-6 borderrounding2">
 
   <form action="../logic/myGroups.php" method="post">
@@ -65,6 +79,7 @@ else{
   </div>
 
   <div class="col-md-6">
+  <h4 class="investmentdark borderrounding4 padding3">Group transaction history</h4>
   <div id="getTrans"><b>Please select a group</b></div>
   </div>
   
@@ -73,7 +88,7 @@ else{
 
 
 <div class="col-md-12 borderrounding2 bg-2">
-<center><h3 class="whitetext" ><u>Groups portfolio info</u></h3><center><br>
+<center><h3 class="padding3 borderrounding7">Performance of all groups</h3><center><br>
 
 <?php
 $group = new groupPortfolioAnalytics(getDB());

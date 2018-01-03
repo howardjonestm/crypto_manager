@@ -82,6 +82,13 @@
         color: #2D2929
     }
 
+    .borderrounding8 {
+        border-radius: 15px 30px 50px;      
+        margin-bottom: 0.75cm;
+        border: 2px solid #C9C8C8;
+       
+    }
+
     .padding1{
         padding: 1cm 1cm;
     }

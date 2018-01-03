@@ -80,22 +80,15 @@ $eth_current_price=(double)($data[2]['price_usd']);
   <p class="blacktext">At market value, these are worth: <span class="investmentgreen"><?php echo "$".(double)($balanceArray['btc'])*$btc_current_price;?></span></p>
   <p class="blacktext">You are currently holding <?php echo $balanceArray['eth'] ?> eth</p>
   <p class="blacktext">At market value, these are worth: <span class="investmentgreen"><?php echo "$".(double)($balanceArray['eth'])*$eth_current_price; ?></span></p>
-</div>
 
-
-
-</div>
-<div class="col-md-6 custombg1 borderrounding3 padding1">
-<div class="coinmarketcap-currency-widget bg-3" data-currency="bitcoin" data-base="GBP" ></div>
+  <div class="coinmarketcap-currency-widget bg-3" data-currency="bitcoin" data-base="GBP" ></div>
 <div class="coinmarketcap-currency-widget bg-3" data-currency="ethereum" data-base="GBP" ></div>
-
 </div>
 
 
 
+</div>
 
-
-       
 </div>
 </div>
   <?php include 'footer.php'; }} ?>

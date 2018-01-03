@@ -71,10 +71,6 @@ class groupPortfolioAnalytics{
     //Return group performance table
     public function returnGroupPerformance(){
 
-        
-
-
-
         $dataArray=array();
         //create array of data
         $namesArray=$this->returnGroupNames();
@@ -110,8 +106,6 @@ class groupPortfolioAnalytics{
             echo "</tr>";
         }
         echo "</table>";
-
-
 
     }
 
