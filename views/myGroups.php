@@ -52,7 +52,7 @@ th {text-align: left;}
   </select>
   
 
-    <p class= "text-success"><?php echo $_SESSION['invesmentCompleted']; $_SESSION['invesmentCompleted']=""; ?></p>
+    <p class= "text-success"><?php if(isset($_SESSION['invesmentCompleted'])){echo $_SESSION['invesmentCompleted'];} $_SESSION['invesmentCompleted']=""; ?></p>
     <strong>Make changes</strong>
         <h3 class="form-signin-heading">Bitcoin</h3>
         <select class="form-control col" id="btcBuySell" name="btcBuySell">

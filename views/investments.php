@@ -34,7 +34,7 @@ else {
   <div class="col-md-6  borderrounding2 padding1">
   <h4 class="investmentdark borderrounding4 padding3">Make a personal portfolio adjustment</h4>
     <form class="form-signin borderrounding" action="../logic/personalInvestment.php" method="post" id="adjustments">
-    <p class= "blacktext"><?php echo $_SESSION['invesmentCompleted']; $_SESSION['invesmentCompleted']=""; ?></p>
+    <p class= "blacktext"><?php if(isset($_SESSION['invesmentCompleted'])){echo $_SESSION['invesmentCompleted'];} $_SESSION['invesmentCompleted']=""; ?></p>
         <h3 class="form-signin-heading blacktext">Bitcoin</h3>       
         
         <select class="form-control" id="btcBuySell" name="btcBuySell">
