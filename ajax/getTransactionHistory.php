@@ -16,7 +16,10 @@ $q = $_GET['q'];
 $transactions = new groupPortfolioAnalytics(getDB());
 $transactionArray=$transactions->returnTransaction($q);
 
-
+if($q=="Select"){
+    echo "<b>Please select a group</b>";
+}
+else{
 
 echo "<table>
 <tr>
@@ -41,6 +44,6 @@ foreach($transactionArray as $row){
 }
 echo "</table>";
 
-?>
+;}?>
 </body>
 </html>

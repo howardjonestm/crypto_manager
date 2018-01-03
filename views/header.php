@@ -12,6 +12,7 @@
   <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
   <script src="../scripts/showHints.js"></script>
   <script src="../scripts/getTransactions.js"></script>
+  <script src="../scripts/returnGroup.js"></script>
 
 
   <style>
@@ -154,8 +155,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="./investments.php">Investments</a></li>
-        <li><a href="./myGroups.php">myGroups</a></li> 
-        <li><a href="./admin.php">Admin</a></li>         
+        <li><a href="./myGroups.php">myGroups</a></li>   
+        <li><a href="./admin.php">Admin</a></li>       
         <li>
             <?php
                 if (!isset($_SESSION['user_id'])){  
