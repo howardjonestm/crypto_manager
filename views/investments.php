@@ -46,7 +46,7 @@ else {
         <label for="bitcoinQuantity" class="sr-only">Quantity</label>
         <input type="number" step="any" id="bitcoinQuantity" class="form-control" name="bitcoinQuantity" placeholder="Quantity" autofocus>
         
-        <br>
+    
 
         <h3 class="form-signin-heading blacktext">Ethereum</h3>
         <select class="form-control" id="ethBuySell" name="ethBuySell">
@@ -56,6 +56,7 @@ else {
         </select>
         <label for="ethereumQuantity" class="sr-only">Quantity</label>
         <input type="number" step="any" id="ethereumQuantity" class="form-control" name="ethereumQuantity" placeholder="Quantity" autofocus>
+        <br>
         <button class="btn btn-l investmentdark btn-block" type="submit">Submit</button>
 
     </form>

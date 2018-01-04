@@ -22,8 +22,8 @@ echo "<table>
 <th>Timestamp</th>
 <th>Eth adj</th>
 <th>Btc adj</th>
-<th>Eth value</th>
-<th>btc value</th>
+<th>Eth price</th>
+<th>btc price</th>
 </tr>";
 
 

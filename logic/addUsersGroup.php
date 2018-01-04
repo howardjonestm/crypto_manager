@@ -13,10 +13,19 @@ if($auth->checkExists($userEmailInput)){
     $id = $auth->getUserID($userEmailInput)['id'];
     $groupID = $group->getGroupId($groupName)['group_id'];
 
+
+    //check if user already in group
+    $groupMembership = $group->getMembers($groupName);
+    if(in_array($userEmailInput,$groupMembership)){
+
+    $_SESSION['addUserFailure']="User already in group";
+
+    }else{
     //insert record
     $group->addUser($id,$groupID);
 
     $_SESSION['addUserSuccess']="New user added";
+    }
 
 
 }else{

@@ -28,21 +28,24 @@ else{
       <p class=\"card-text\">Description: ".$groups->returnDescription($groupName)["group_description"]."</p>    
 
       <div class=\"row greybackground padding3 borderrounding5\">
-      <p class=\"card-text\"><strong>Members: </strong><br></p>";
+      <p class=\"card-text\"><strong>Members: </strong><br></p4>
+      <h4>You</h4>";
       
-
-      foreach($groups->getMembers($groupName) as $value){
+      
+      $members = $groups->getMembers($groupName);
+      $shift = array_shift($members);
+      foreach($members as $value){
              
         echo "
-        <div class=\"col-md-9\">
+        
         <form class=\"form-inline\" method=\"post\" action=\"../logic/deleteUserGroup.php\">      
             <input type=\"hidden\" class=\"form-control\" id=\"groupName\" value=\"$groupName\" name =\"groupName\">$value</input>   
-        </div> 
-        <div class=\"col-md-3\">  
+       
+        
             <button type=\"submit\" id=\"myBtn\" name=\"user\" class=\"btn btn-danger\" value=\"$value\">Remove user</button>   
             
         </form>
-        </div>
+        
         ";
       }
      
