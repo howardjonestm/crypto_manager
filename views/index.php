@@ -13,9 +13,8 @@ $email = $findEmail->getUserEmail($_SESSION['user_id']);
 
 
 
-  if(isset($_SESSION['user_id'])){
-    
-    echo "<h3 class=\"margin\">Welcome $email </h3>";
+  if(isset($_SESSION['user_id'])){  
+    echo "<h3 class=\"margin\">Welcome".$email ."</h3>";
   }else{
     echo " <h3 class=\"margin\">Welcome to cryptomanager</h3> ";
   }
