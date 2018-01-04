@@ -13,6 +13,7 @@
   <script src="../scripts/showHints.js"></script>
   <script src="../scripts/getTransactions.js"></script>
   <script src="../scripts/returnGroup.js"></script>
+  <script src="../scripts/displayPerformance.js"></script>
 
 
   <style>

@@ -46,9 +46,6 @@ $email = $emailRetrieve->getUserEmail($_SESSION['user_id']);
 
 $groupName = $_POST['groupName'];
 
-// echo "$groupName \n$email\n $time\n $eth_adjustment\n
-// $btc_adjustment\n $eth_current_price\n $btc_current_price\n";
-
 
 //insert transaction record 
 $transaction = new groups(getDb());

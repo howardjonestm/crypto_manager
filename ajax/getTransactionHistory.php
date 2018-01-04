@@ -2,12 +2,7 @@
 include '../init.php';
 session_start();
 ?>
-<!DOCTYPE html>
-<html>
-<head>
 
-</head>
-<body>
 
 <?php
 $q = $_GET['q'];
@@ -45,5 +40,3 @@ foreach($transactionArray as $row){
 echo "</table>";
 
 ;}?>
-</body>
-</html>

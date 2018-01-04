@@ -69,7 +69,7 @@ class groupPortfolioAnalytics{
 
         
     //Return group performance table
-    public function returnGroupPerformance(){
+    public function returnGroupPerformance($activeGroup){
 
         $dataArray=array();
         //create array of data
@@ -99,7 +99,9 @@ class groupPortfolioAnalytics{
          
         foreach($dataArray as $row){
             echo "<tr>";
-            echo "<td>" . $row['groupName'] . "</td>";
+        if($row['groupName']==$activeGroup){echo "<td class=\"investmentgreen\">". $row['groupName'] ."</td>";}
+                    else{
+            echo "<td>" . $row['groupName'] . "</td>";}
             echo "<td>" . $row['eth_holding'] . "</td>";
             echo "<td>" . $row['btc_holding'] . "</td>";
             echo "<td>" . $row['total_value'] . "</td>";

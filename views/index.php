@@ -11,12 +11,16 @@ include 'header.php';
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-2 text-center">
-  <h3 class="margin">About</h3>
-  <p>Cryptomanager is a bespoke cryptocurrency portfolio management tool. It allows the realtime tracking of personal etherem and bitcoin portfolios, in addition to group managed investments </p>
-  <p>
-    <span class="glyphicon glyphicon-arrow-right"></span><kbd>Insert welcome here</kbd><span class="glyphicon glyphicon-arrow-left"></span>
-  </p>
+<div class="container-fluid bg-2 r">
+  <u><h2 class="margin text-center">How to use</h2></u>
+  <div class="container">
+    <p>(1) If you have not already, sign up and create an account</p>
+    <p>(2) Personal investment tools can be found under "investments tab". Use the buy and sell options to adjust your personal portfolio. The live value of your portfolio is then calculated</p>
+    <p>(3) Create a group investment portfolio under the "admin tab". Here you can also add/delete users from your group</p>
+    <p>(4) Make adjustments to your group portfolio under the "myGroups" tab. Here transactions for each of your group members are displayed, along with the performance of all groups registered on the site</p>
+
+  </div>
+  
 </div>
 
 <!-- Third Container (Grid) -->

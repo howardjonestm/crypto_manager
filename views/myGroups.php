@@ -41,7 +41,7 @@ th {text-align: left;}
 
   <div class="form-group">
     <label for="sel1">Select group:</label>
-    <select class="form-control" id="groupName" name="groupName" onchange="getTransactions(this.value)">
+    <select class="form-control" id="groupName" name="groupName" onchange="getTransactions(this.value); displayPerformance(this.value)">
 
   <?php 
   echo "<option selected>Select</option>";
@@ -91,13 +91,12 @@ th {text-align: left;}
 
 
 <div class="col-md-12 borderrounding2 bg-2">
-<center><h3 class="padding3 borderrounding7">Performance of all groups</h3><center><br>
+<center><h3 class="padding3 borderrounding7">Performance of all groups (may take a moment to load)</h3><center>
 
-<?php
-$group = new groupPortfolioAnalytics(getDB());
-//var_dump($group->returnEthBalance("12121"));
-$groupsList = $group->returnGroupPerformance();
-?>
+
+
+
+<div id="displayPerformance"><b>Please select a group</b></div>
 
 </div>
 </div>
