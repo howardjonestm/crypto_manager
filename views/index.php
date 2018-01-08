@@ -10,10 +10,11 @@ $email = $findEmail->getUserEmail($_SESSION['user_id']);
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center">
   <?php
-  if(isset($_SESSION['user_id'])){  
-    echo "<h3 class=\"margin\">Welcome $email </h3>";
-  }else{
+  if(!isset($_SESSION['user_id'])){  
     echo " <h3 class=\"margin\">Welcome to cryptomanager</h3> ";
+  }else{
+    echo 
+    "<h3 class=\"margin\">Welcome $email </h3>";
   }
   
   ?>
