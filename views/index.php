@@ -4,7 +4,9 @@ include 'header.php';
 include '../init.php';
 
 $findEmail = new authentication(getDB());
+if(isset($_SESSION['user_id'])){  
 $email = $findEmail->getUserEmail($_SESSION['user_id']);
+}
 ?>
 
 <!-- First Container -->
