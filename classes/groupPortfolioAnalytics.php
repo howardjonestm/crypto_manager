@@ -60,7 +60,7 @@ class groupPortfolioAnalytics{
         $json = file_get_contents($url);
         $data = json_decode($json, TRUE);
         $btc_current_price=$data[0]['price_usd'];
-        $eth_current_price=$data[2]['price_usd'];
+        $eth_current_price=$data[1]['price_usd'];
 
         $total=($btc_current_price*$btcbalance)+($eth_current_price*$ethbalance);
         return $total;

@@ -1,5 +1,4 @@
 <?php
-//ideally need to check session on this page for security
 include '../init.php';
 session_start();
 
@@ -25,7 +24,7 @@ $url = "https://api.coinmarketcap.com/v1/ticker/";
 $json = file_get_contents($url);
 $data = json_decode($json, TRUE);
 $btc_current_price=$data[0]['price_usd'];
-$eth_current_price=$data[2]['price_usd'];
+$eth_current_price=$data[1]['price_usd'];
 
 //calculate portfolio adjustments
 $btcBuySell = $_POST["btcBuySell"];

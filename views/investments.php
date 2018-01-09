@@ -73,7 +73,7 @@ $url = "https://api.coinmarketcap.com/v1/ticker/";
 $json = file_get_contents($url);
 $data = json_decode($json, TRUE);
 $btc_current_price=(double)($data[0]['price_usd']);
-$eth_current_price=(double)($data[2]['price_usd']);
+$eth_current_price=(double)($data[1]['price_usd']);
 
   ?>
 
